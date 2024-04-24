@@ -23,8 +23,23 @@ public class AdvancedmappingsApplication {
         
       //createCourseAndStudents(appDAO);
 
-      findCourseAndStudents(appDAO);
+      //findCourseAndStudents(appDAO);
+
+      findStudentAndCourses(appDAO);
     };
+  }
+
+  private void findStudentAndCourses(AppDAO appDAO) {
+      
+      int theId = 1;
+  
+      Student tempStudent = appDAO.findStudentsAndCoursesByStudentId(theId);
+  
+      System.out.println("Found student: " + tempStudent);
+  
+      System.out.println("Courses: " + tempStudent.getCourses());
+  
+      System.out.println("Done!");
   }
 
   private void findCourseAndStudents(AppDAO appDAO) {

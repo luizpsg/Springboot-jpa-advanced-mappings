@@ -5,6 +5,7 @@ import java.util.List;
 import com.luizpaulo.advancedmappings.entity.Course;
 import com.luizpaulo.advancedmappings.entity.Instructor;
 import com.luizpaulo.advancedmappings.entity.InstructorDetail;
+import com.luizpaulo.advancedmappings.entity.Student;
 
 public interface AppDAO {
 
@@ -35,4 +36,7 @@ public interface AppDAO {
   Course findCourseAndReviewsByCourseId(int id);
   
   Course findCoursesAndStudentsByCourseId(int id);
+
+  Student findStudentsAndCoursesByStudentId(int id);
+
 }

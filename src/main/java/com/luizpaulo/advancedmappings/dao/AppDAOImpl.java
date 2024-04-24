@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.luizpaulo.advancedmappings.entity.Course;
 import com.luizpaulo.advancedmappings.entity.Instructor;
 import com.luizpaulo.advancedmappings.entity.InstructorDetail;
+import com.luizpaulo.advancedmappings.entity.Student;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -162,6 +163,23 @@ public class AppDAOImpl implements AppDAO {
     Course course = query.getSingleResult();
 
     return course;
+  }
+
+  @Override
+  public Student findStudentsAndCoursesByStudentId(int id) {
+
+    TypedQuery<Student> query = entityManager.createQuery(
+                      "select s from Student s "
+                      + "JOIN FETCH s.courses "
+                      + "where s.id=:data", Student.class);
+
+    query.setParameter("data", id);
+
+    Student student = query.getSingleResult();
+
+    return student;
+      
+    
   }
 
 }
