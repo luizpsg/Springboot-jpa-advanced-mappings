@@ -28,7 +28,7 @@ public class AdvancedmappingsApplication {
 
       //findInstructor(appDAO);
 
-      //deleteInstructor(appDAO);
+      deleteInstructor(appDAO);
 
       //findInstructorDetail(appDAO);
 
@@ -44,7 +44,7 @@ public class AdvancedmappingsApplication {
 
       //updateInstructor(appDAO);
 
-      updateCourse(appDAO);
+      //updateCourse(appDAO);
     };
   }
 
@@ -187,7 +187,7 @@ public class AdvancedmappingsApplication {
   private void deleteInstructor(AppDAO appDAO) {
 
     // delete the instructor
-    int theId = 2;
+    int theId = 1;
 
     System.out.println("Deleting instructor with id: " + theId);
     
