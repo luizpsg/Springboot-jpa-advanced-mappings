@@ -40,8 +40,47 @@ public class AdvancedmappingsApplication {
 
       //findCoursesForInstructor(appDAO);
 
-      findInstructorWithCoursesJoinFetch(appDAO);
+      //findInstructorWithCoursesJoinFetch(appDAO);
+
+      //updateInstructor(appDAO);
+
+      updateCourse(appDAO);
     };
+  }
+
+  private void updateCourse(AppDAO appDAO) {
+    int theId = 10;
+
+    Course tempCourse = appDAO.findCourseById(theId);
+
+    System.out.println("Found course: " + tempCourse);
+
+    System.out.println("Updating course: " + tempCourse);
+
+    tempCourse.setTitle("Java - The Ultimate Guide");
+
+    appDAO.update(tempCourse);
+
+    System.out.println("Done!");
+  }
+
+  private void updateInstructor(AppDAO appDAO) {
+    int theId = 1;
+
+    System.out.println("Finding instructor id: " + theId);
+
+    Instructor tempInstructor = appDAO.findInstructorById(theId);
+
+    System.out.println("Found instructor: " + tempInstructor);
+
+    System.out.println("Updating instructor: " + tempInstructor);
+
+    tempInstructor.setFirstName("Luiz Paulo");
+    tempInstructor.setLastName("Gonçalves");
+
+    appDAO.update(tempInstructor);
+
+    System.out.println("Done!");
   }
 
   private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
