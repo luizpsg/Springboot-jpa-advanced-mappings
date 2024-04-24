@@ -1,6 +1,20 @@
 package com.luizpaulo.advancedmappings.entity;
 
-import jakarta.persistence.*;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 // annotate the class as an entity and map to db table
 @Entity
@@ -27,6 +41,9 @@ public class Instructor {
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "instructor_detail_id")
   private InstructorDetail instructorDetail;
+
+  @OneToMany(mappedBy = "instructor", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+  private List<Course> courses;
 
   // create constructors
   public Instructor() {
@@ -77,6 +94,25 @@ public class Instructor {
 
   public void setInstructorDetail(InstructorDetail instructorDetail) {
     this.instructorDetail = instructorDetail;
+  }
+
+  public List<Course> getCourses() {
+    return this.courses;
+  }
+
+  public void setCourses(List<Course> courses) {
+    this.courses = courses;
+  }
+
+  // add convenience methods for bi-directional relationship
+  public void add(Course tempCourse) {
+    if (courses == null) {
+      courses = new ArrayList<>();
+    }
+
+    courses.add(tempCourse);
+
+    tempCourse.setInstructor(this);
   }
 
   // generate toString() method

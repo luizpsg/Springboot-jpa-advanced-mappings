@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.luizpaulo.advancedmappings.dao.AppDAO;
+import com.luizpaulo.advancedmappings.entity.Course;
 import com.luizpaulo.advancedmappings.entity.Instructor;
 import com.luizpaulo.advancedmappings.entity.InstructorDetail;
 
@@ -29,8 +30,40 @@ public class AdvancedmappingsApplication {
 
       //findInstructorDetail(appDAO);
 
-      deleteInstructorDetail(appDAO);
+      //deleteInstructorDetail(appDAO);
+
+      createInstructorWithCourses(appDAO);
     };
+  }
+
+  private void createInstructorWithCourses(AppDAO appDAO) {    
+    
+    // create the instructor
+    Instructor tempInstructor = new Instructor("Braulio", "Nildo", "braunildo@lp.com");
+
+    // create the instructor detail
+    InstructorDetail tempInstructorDetail = new InstructorDetail("youtube.com/luizpsg", "eating");
+
+    tempInstructor.setInstructorDetail(tempInstructorDetail);
+
+    // create some courses
+    Course tempCourse1 = new Course("Air Guitar - The Ultimate Guide");
+    Course tempCourse2 = new Course("The Pinball Masterclass");
+
+    // add courses to instructor
+    tempInstructor.add(tempCourse1);
+    tempInstructor.add(tempCourse2);
+
+    // save the instructor
+    //
+    // Note: this will also save the courses
+    // because of CascadeType.ALL
+    //
+    System.out.println("Saving instructor: " + tempInstructor);
+    System.out.println("Saving courses: " + tempInstructor.getCourses());
+    appDAO.save(tempInstructor);
+
+    System.out.println("Done!");
   }
 
   private void deleteInstructorDetail(AppDAO appDAO) {
