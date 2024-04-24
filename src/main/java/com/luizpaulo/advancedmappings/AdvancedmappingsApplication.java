@@ -1,5 +1,7 @@
 package com.luizpaulo.advancedmappings;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,8 +36,30 @@ public class AdvancedmappingsApplication {
 
       //createInstructorWithCourses(appDAO);
 
-      findInstructorWithCourses(appDAO);
+      //findInstructorWithCourses(appDAO);
+
+      findCoursesForInstructor(appDAO);
     };
+  }
+
+  private void findCoursesForInstructor(AppDAO appDAO) {
+    // get the courses for a given instructor
+    int theId = 1;
+
+    System.out.println("Finding instructor id: " + theId);
+
+    Instructor tempInstructor = appDAO.findInstructorById(theId);
+
+    System.out.println("tempInstructor: " + tempInstructor);
+
+    System.out.println("Finding courses for instructor id: " + theId);
+    List<Course> courses = appDAO.findCoursesByInstructorId(theId);
+
+    tempInstructor.setCourses(courses);
+
+    System.out.println("The associated courses: " + tempInstructor.getCourses());
+
+    System.out.println("Done!");
   }
 
   private void findInstructorWithCourses(AppDAO appDAO) {

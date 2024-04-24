@@ -1,5 +1,8 @@
 package com.luizpaulo.advancedmappings.dao;
 
+import java.util.List;
+
+import com.luizpaulo.advancedmappings.entity.Course;
 import com.luizpaulo.advancedmappings.entity.Instructor;
 import com.luizpaulo.advancedmappings.entity.InstructorDetail;
 
@@ -14,5 +17,7 @@ public interface AppDAO {
   InstructorDetail findInstructorDetailById(int id);
 
   void deleteInstructorDetailById(int id);
+
+  List<Course> findCoursesByInstructorId(int id);
 
 }
