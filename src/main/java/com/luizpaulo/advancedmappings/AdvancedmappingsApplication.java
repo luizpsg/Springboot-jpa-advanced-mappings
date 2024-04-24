@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.luizpaulo.advancedmappings.dao.AppDAO;
+import com.luizpaulo.advancedmappings.entity.Course;
+import com.luizpaulo.advancedmappings.entity.Student;
 
 @SpringBootApplication
 public class AdvancedmappingsApplication {
@@ -18,9 +20,43 @@ public class AdvancedmappingsApplication {
   public CommandLineRunner commandLineRunner(AppDAO appDAO){
 
     return runner -> {
-      
+        
+      //createCourseAndStudents(appDAO);
 
+      findCourseAndStudents(appDAO);
     };
+  }
+
+  private void findCourseAndStudents(AppDAO appDAO) {
+    
+    int theId = 10;
+
+    Course tempCourse = appDAO.findCoursesAndStudentsByCourseId(theId);
+
+    System.out.println("Found course: " + tempCourse);
+
+    System.out.println("Students: " + tempCourse.getStudents());
+
+    System.out.println("Done!");
+  }
+
+  private void createCourseAndStudents(AppDAO appDAO) {
+    
+    // create a course
+    Course tempCourse = new Course("Pacman - How To Score One Million Points");
+
+    // create the students
+    Student tempStudent1 = new Student("Luiz Paulo", "Gonçalves", "luizpsg@lp.com");
+    Student tempStudent2 = new Student("Braulio", "Nildo", "braunildo@lp.com");
+    
+    // add students to the course
+    tempCourse.addStudent(tempStudent1);
+    tempCourse.addStudent(tempStudent2);
+
+    // save the course and associated students
+    System.out.println("Saving course: " + tempCourse);
+    System.out.println("Saving students: " + tempCourse.getStudents());
+    appDAO.save(tempCourse);
   }
 
 
