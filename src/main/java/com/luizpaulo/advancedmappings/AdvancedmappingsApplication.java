@@ -28,7 +28,7 @@ public class AdvancedmappingsApplication {
 
       //findInstructor(appDAO);
 
-      deleteInstructor(appDAO);
+      //deleteInstructor(appDAO);
 
       //findInstructorDetail(appDAO);
 
@@ -45,7 +45,26 @@ public class AdvancedmappingsApplication {
       //updateInstructor(appDAO);
 
       //updateCourse(appDAO);
+
+      deleteCourse(appDAO);
     };
+  }
+
+  private void deleteCourse(AppDAO appDAO) {
+    
+    int theId = 10;
+
+    System.out.println("Finding course id: " + theId);
+
+    Course tempCourse = appDAO.findCourseById(theId);
+
+    System.out.println("Found course: " + tempCourse);
+
+    System.out.println("Deleting course: " + tempCourse);
+
+    appDAO.deleteCourseById(theId);
+
+    System.out.println("Done!");
   }
 
   private void updateCourse(AppDAO appDAO) {
