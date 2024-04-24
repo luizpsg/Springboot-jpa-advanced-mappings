@@ -25,18 +25,17 @@ public class AdvancedmappingsApplication {
 
       //findInstructor(appDAO);
 
-      // deleteInstructor(appDAO);
+      //deleteInstructor(appDAO);
 
-      // findInstructorDetail(appDAO);
+      //findInstructorDetail(appDAO);
 
       deleteInstructorDetail(appDAO);
-
     };
   }
 
   private void deleteInstructorDetail(AppDAO appDAO) {
     // delete the instructor detail
-    int theId = 2;
+    int theId = 3;
 
     System.out.println("Deleting instructor detail with id: " + theId);
     
@@ -78,10 +77,10 @@ public class AdvancedmappingsApplication {
   private void createInstructor(AppDAO appDAO) {
     
     // create the instructor
-    Instructor tempInstructor = new Instructor("Luiz Paulo", "Gonçalves", "luizpsg@lp.com");
+    Instructor tempInstructor = new Instructor("Braulio", "Nildo", "braunildo@lp.com");
 
     // create the instructor detail
-    InstructorDetail tempInstructorDetail = new InstructorDetail("youtube.com/luizpsg", "coding");
+    InstructorDetail tempInstructorDetail = new InstructorDetail("youtube.com/luizpsg", "eating");
      
     
     // create the instructor
