@@ -6,8 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.luizpaulo.advancedmappings.dao.AppDAO;
-import com.luizpaulo.advancedmappings.entity.Course;
-import com.luizpaulo.advancedmappings.entity.Review;
 
 @SpringBootApplication
 public class AdvancedmappingsApplication {
@@ -21,15 +19,15 @@ public class AdvancedmappingsApplication {
 
     return runner -> {
       
-      // createCourseAndReviews(appDAO);
-
-      // retrieveCourseAndReviews(appDAO);
-
-      deleteCourseAndReviews(appDAO);
 
     };
   }
 
+
+
+
+
+/*
   private void deleteCourseAndReviews(AppDAO appDAO) {
       
       int theId = 10;
@@ -47,11 +45,6 @@ public class AdvancedmappingsApplication {
       System.out.println("Done!");
   }
 
-
-
-
-
-/*
   private void retrieveCourseAndReviews(AppDAO appDAO) {
       
       int theId = 10;
