@@ -25,8 +25,34 @@ public class AdvancedmappingsApplication {
 
       //findCourseAndStudents(appDAO);
 
-      findStudentAndCourses(appDAO);
+      //findStudentAndCourses(appDAO);
+
+      addMoreCoursesToStudent(appDAO);
     };
+  }
+
+  private void addMoreCoursesToStudent(AppDAO appDAO) {
+    
+    int theId = 2;
+
+    Student tempStudent = appDAO.findStudentsAndCoursesByStudentId(theId);
+
+    System.out.println("Found student: " + tempStudent);
+
+    System.out.println("Courses: " + tempStudent.getCourses());
+
+    // create more courses
+    Course tempCourse1 = new Course("Rubik's Cube - How To Speed Cube");
+    Course tempCourse2 = new Course("Atari 2600 - Game Development");
+
+    // add student to courses
+    tempStudent.addCourse(tempCourse1);
+    tempStudent.addCourse(tempCourse2);
+
+    System.out.println("Saving courses: " + tempCourse1 + " and " + tempCourse2);
+
+
+    appDAO.update(tempStudent);
   }
 
   private void findStudentAndCourses(AppDAO appDAO) {
