@@ -21,9 +21,48 @@ public class AdvancedmappingsApplication {
 
     return runner -> {
       
-      createCourseAndReviews(appDAO);
+      // createCourseAndReviews(appDAO);
+
+      // retrieveCourseAndReviews(appDAO);
+
+      deleteCourseAndReviews(appDAO);
 
     };
+  }
+
+  private void deleteCourseAndReviews(AppDAO appDAO) {
+      
+      int theId = 10;
+  
+      System.out.println("Finding course id: " + theId);
+  
+      Course tempCourse = appDAO.findCourseAndReviewsByCourseId(theId);
+  
+      System.out.println("Found course: " + tempCourse);
+  
+      System.out.println("Deleting course: " + tempCourse);
+  
+      appDAO.deleteCourseById(theId);
+  
+      System.out.println("Done!");
+  }
+
+
+
+
+
+/*
+  private void retrieveCourseAndReviews(AppDAO appDAO) {
+      
+      int theId = 10;
+  
+      Course tempCourse = appDAO.findCourseAndReviewsByCourseId(theId);
+  
+      System.out.println("Found course: " + tempCourse);
+  
+      System.out.println("Reviews: " + tempCourse.getReviews());
+  
+      System.out.println("Done!");
   }
 
   private void createCourseAndReviews(AppDAO appDAO) {
@@ -44,10 +83,6 @@ public class AdvancedmappingsApplication {
       System.out.println("Done!");
   }
 
-
-
-
-/*
   private void deleteCourse(AppDAO appDAO) {
     
     int theId = 10;
