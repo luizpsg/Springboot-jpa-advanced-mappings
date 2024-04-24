@@ -32,8 +32,26 @@ public class AdvancedmappingsApplication {
 
       //deleteInstructorDetail(appDAO);
 
-      createInstructorWithCourses(appDAO);
+      //createInstructorWithCourses(appDAO);
+
+      findInstructorWithCourses(appDAO);
     };
+  }
+
+  private void findInstructorWithCourses(AppDAO appDAO) {
+
+    // get the instructor from db
+    int theId = 1;
+    System.out.println("Finding instructor with id: " + theId);
+
+    Instructor tempInstructor = appDAO.findInstructorById(theId);
+
+    System.out.println("Found instructor: " + tempInstructor);
+
+    // get courses for the instructor
+    System.out.println("Courses: " + tempInstructor.getCourses());
+
+    System.out.println("Done!");
   }
 
   private void createInstructorWithCourses(AppDAO appDAO) {    
