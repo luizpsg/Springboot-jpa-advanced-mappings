@@ -1,16 +1,11 @@
 package com.luizpaulo.advancedmappings;
 
-import java.util.List;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.luizpaulo.advancedmappings.dao.AppDAO;
-import com.luizpaulo.advancedmappings.entity.Course;
-import com.luizpaulo.advancedmappings.entity.Instructor;
-import com.luizpaulo.advancedmappings.entity.InstructorDetail;
 
 @SpringBootApplication
 public class AdvancedmappingsApplication {
@@ -23,33 +18,16 @@ public class AdvancedmappingsApplication {
   public CommandLineRunner commandLineRunner(AppDAO appDAO){
 
     return runner -> {
-    
-      //createInstructor(appDAO);
+      
 
-      //findInstructor(appDAO);
 
-      //deleteInstructor(appDAO);
-
-      //findInstructorDetail(appDAO);
-
-      //deleteInstructorDetail(appDAO);
-
-      //createInstructorWithCourses(appDAO);
-
-      //findInstructorWithCourses(appDAO);
-
-      //findCoursesForInstructor(appDAO);
-
-      //findInstructorWithCoursesJoinFetch(appDAO);
-
-      //updateInstructor(appDAO);
-
-      //updateCourse(appDAO);
-
-      deleteCourse(appDAO);
     };
   }
 
+
+
+
+/*
   private void deleteCourse(AppDAO appDAO) {
     
     int theId = 10;
@@ -255,6 +233,6 @@ public class AdvancedmappingsApplication {
 
     System.out.println("Done!");
   }
-
+ */
   
 }
