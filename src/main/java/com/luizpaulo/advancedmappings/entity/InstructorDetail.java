@@ -1,11 +1,6 @@
 package com.luizpaulo.advancedmappings.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 
 // annotate the class as an entity and map to db table
@@ -25,6 +20,9 @@ public class InstructorDetail {
 
   @Column(name = "hobby")
   private String hobby;
+
+  @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+  private Instructor instructor;
 
   // create constructors
 
@@ -62,6 +60,14 @@ public class InstructorDetail {
     this.hobby = hobby;
   }
   
+  public Instructor getInstructor() {
+    return this.instructor;
+  }
+
+  public void setInstructor(Instructor instructor) {
+    this.instructor = instructor;
+  }
+
   // generate toString() method
   @Override
   public String toString() {
