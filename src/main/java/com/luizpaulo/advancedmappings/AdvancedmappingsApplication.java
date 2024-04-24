@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.luizpaulo.advancedmappings.dao.AppDAO;
+import com.luizpaulo.advancedmappings.entity.Course;
+import com.luizpaulo.advancedmappings.entity.Review;
 
 @SpringBootApplication
 public class AdvancedmappingsApplication {
@@ -19,9 +21,27 @@ public class AdvancedmappingsApplication {
 
     return runner -> {
       
-
+      createCourseAndReviews(appDAO);
 
     };
+  }
+
+  private void createCourseAndReviews(AppDAO appDAO) {
+      
+      // create a course
+      Course tempCourse = new Course("Pacman - How To Score One Million Points");
+  
+      // add some reviews
+      tempCourse.addReview(new Review("Great course ... loved it!"));
+      tempCourse.addReview(new Review("Cool course, job well done"));
+      tempCourse.addReview(new Review("What a dumb course, you are an idiot!"));
+  
+      // save the course ... and leverage the cascade all :-)
+      System.out.println("Saving course: " + tempCourse);
+      System.out.println("Saving reviews: " + tempCourse.getReviews());
+      appDAO.save(tempCourse);
+  
+      System.out.println("Done!");
   }
 
 
